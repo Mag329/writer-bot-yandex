@@ -625,8 +625,7 @@ async def gpt_request(message):
                     "messages": history_messages
                 }
             ) as resp:
-                logging.info(f'{message.from_user.id} - Запрос к нейросети:\n'
-                                 f"""- Request: {
+                logging_text = (f"""- Request: {
                                         'https://llm.api.cloud.yandex.net/foundationModels/v1/completion',
                                         {
                                             'Authorization': f"Bearer {data['secret']['iam_token']}",
@@ -639,9 +638,11 @@ async def gpt_request(message):
                                                 "temperature": data['main']['temperature'],
                                                 "maxTokens": str(data['main']['max_tokens_response'])
                                             },
-                                            "messages": history_messages}}\n"""
-                                 f'- Response: {str(resp.status)}\n'
-                                 f'- Response Body: {resp.text}')
+                                            "messages": history_messages}}\n\n"""
+                                f'- Response: {str(resp.status)}\n\n'
+                                f'- Response Body: {resp.text}')
+                logging.info(f'{message.from_user.id} - Запрос к нейросети:\n{logging_text}')
+                await debug_send(message, logging_text)
 
                 if resp.status == 200:
                     result = (await resp.json())['result']['alternatives'][0]['message']['text']

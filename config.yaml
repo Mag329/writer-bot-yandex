@@ -10,7 +10,6 @@ main:
   temperature: 0.6
   token_limit: 200
 secret:
-  debug_code: CODE
   folder_id: FOLDER_ID
   iam_token: IAM_TOKEN
   owner_id: OWNER_ID

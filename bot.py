@@ -14,8 +14,6 @@ async def start(message):
 async def new(message):
     response, markup = await new_session(message)
     
-    logging.info(f'{message.from_user.id} - Создание нового диалога')
-    
     await bot.send_message(message.chat.id, response, reply_markup=markup)
 
 
@@ -24,7 +22,6 @@ async def style(message):
     try:
         try:
             await save_style(message, message.text)
-            logging.info(f'{message.from_user.id} - Сохранение стиля')
         except Warning as e:
             await bot.send_message(message.chat.id, e)
             return
@@ -39,7 +36,6 @@ async def style(message):
 async def character(message):
     try:      
         await save_character(message, message.text)
-        logging.info(f'{message.from_user.id} - Сохранение героя')
         
         markup = await generate_markup(messages['bot']['character']['buttons'])
         await bot.send_message(message.chat.id, messages['bot']['character']['text'], reply_markup=markup)
@@ -53,7 +49,6 @@ async def setting(message):
     try:
         try:
             await save_setting(message, message.text)
-            logging.info(f'{message.from_user.id} - Сохранение сеттинга')
         except Warning as e:
             await bot.send_message(message.chat.id, e)
             return
@@ -68,28 +63,16 @@ async def setting(message):
 
 @bot.message_handler(commands=['debug'])
 async def debug(message):
-    logging.warning(f'{message.from_user.id} - Попытка использования /debug')
-    text = message.text.replace('/debug ', '')
-    if text == str(data['secret']['debug_code']):
-        logging.warning(f'{message.from_user.id} - Верный пароль для /debug')
-        with open("logs/latest.log", "rb") as f:
-            await bot.send_document(message.chat.id, f)
-    else:
-        logging.warning(f'Неверный пароль для /debug')
-        await bot.send_message(message.chat.id, messages['bot']['debug']['error'])
+    logging.warning(f'{message.from_user.id} - Использование /debug')
+    with open("logs/latest.log", "rb") as f:
+        await bot.send_document(message.chat.id, f)
 
 
 @bot.message_handler(commands=['debug_mode'])
 async def debug_mode(message):
-    logging.warning(f'{message.from_user.id} - Попытка использования /debug_mode')
-    text = message.text.replace('/debug_mode ', '')
-    if text == str(data['secret']['debug_code']):
-        logging.warning(f'{message.from_user.id} - Верный пароль для /debug_mode')
-        response = await set_debug_mode(message)
-        await bot.send_message(message.chat.id, response)
-    else:
-        logging.warning(f'Неверный пароль для /debug_mode')
-        await bot.send_message(message.chat.id, messages['models']['set_debug_mode']['error_code'])
+    logging.warning(f'{message.from_user.id} - Использование /debug_mode')
+    response = await set_debug_mode(message)
+    await bot.send_message(message.chat.id, response)
         
 
 @bot.message_handler(func=lambda message: message.text in messages['models']['statistics']['triger'])
@@ -122,6 +105,8 @@ async def show_tokens(message):
 #         if history != None:
 #             history = ast.literal_eval(history[0])
 #             all_history = ''
+#             del history[0]
+#             del history[0]
 #             for i in history:
 #                 all_history += f" {i['text']}"
                 
@@ -146,7 +131,7 @@ async def handle_message(message):
     
     markup = await generate_markup(messages['bot']['master']['buttons'])
         
-    logging.debug(f"{message.from_user.id} - Запрос к GPT\nЗапрос: {message.text}")
+    logging.info(f"{message.from_user.id} - Запрос к GPT\nЗапрос: {message.text}")
     response = await gpt_request(message)
     
     response_parts = [response[i:i+4096] for i in range(0, len(response), 4096)]
