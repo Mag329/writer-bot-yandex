@@ -1,5 +1,4 @@
 import aiohttp
-from transformers import AutoTokenizer
 import ast
 import sqlite3
 import asyncio
