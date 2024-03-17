@@ -1,0 +1,22 @@
+main:
+  assistant_content: ''
+  db_path: db.sqlite
+  max_sessions: 2
+  max_tokens_request: 10
+  max_tokens_response: 20
+  max_users: 2
+  system_content: Ты - дружелюбный помощник для написания сценариев. Жанр {0}. Главный
+    герой {1}. Сеттинг истории {2}. Давай краткий ответ на русском языке.
+  temperature: 0.6
+  token_limit: 200
+secret:
+  debug_code: CODE
+  folder_id: FOLDER_ID
+  iam_token: IAM_TOKEN
+  owner_id: OWNER_ID
+  ssh:
+    host: HOST
+    key_file: FILE
+    username: USERNAME
+  telegram_token: TOKEN
+  token_created_at: DATE
