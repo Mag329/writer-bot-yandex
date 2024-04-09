@@ -1,9 +1,9 @@
 # Описание проекта
 
 Проект представляет собой бота мульти-помощника, использующего модель генерации текста на основе нейросетей.
-
-[Бот](https://t.me/NeuronAssistant_bot)
-[GitHub](https://github.com/Mag329/writer-bot-yandex)
+<div align='center'>
+<a href="https://wakatime.com/badge/user/018b919c-8ec9-4a53-9254-f550cb396443/project/018e3d73-1df2-4b52-a89c-6a1072a0868d"><img src="https://wakatime.com/badge/user/018b919c-8ec9-4a53-9254-f550cb396443/project/018e3d73-1df2-4b52-a89c-6a1072a0868d.svg?style=flat-square" alt="wakatime"></a>
+</div>
 
 ## Структура проекта
 
