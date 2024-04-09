@@ -2,7 +2,7 @@
 
 Проект представляет собой бота мульти-помощника, использующего модель генерации текста на основе нейросетей.
 <div align='center'>
-<a href="https://wakatime.com/badge/user/018b919c-8ec9-4a53-9254-f550cb396443/project/018e3d73-1df2-4b52-a89c-6a1072a0868d"><img src="https://wakatime.com/badge/user/018b919c-8ec9-4a53-9254-f550cb396443/project/018e3d73-1df2-4b52-a89c-6a1072a0868d.svg?style=flat-square" alt="wakatime"></a>
+<a href="https://wakatime.com/@Mag329/projects/nauwodypoq?start=2024-04-03&end=2024-04-09"><img src="https://wakatime.com/badge/user/018b919c-8ec9-4a53-9254-f550cb396443/project/018e3d73-1df2-4b52-a89c-6a1072a0868d.svg?style=flat-square" alt="wakatime"></a>
 </div>
 
 ## Структура проекта
